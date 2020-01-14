@@ -1,3 +1,24 @@
+package database.helpers
+
+import java.util.UUID
+
+import codacy.database.accountDB._
+import codacy.database.accountDB.integration.IntegrationType
+import codacy.database.{CommitEmailAddressBase, EmailAddress, EmailAddressBase}
+import codacy.database.accountDB.payments.{PaymentPlan, Subscription}
+import codacy.database.accountDB.project.{Branch, Project, _}
+import codacy.database.accountDB.team.{Organization, OrganizationIdentifier, Team}
+import codacy.database.accountDB.account._
+import codacy.database.api.RetentionStatus
+import codacy.database.analysisDB.project.{PullRequest, PullRequestState}
+import codacy.database.analysisDB.project.commit.Commit
+import codacy.database.utils.Implicits._
+import codacy.foundation.tests.{SpecsHelper => FoundationSpecsHelper}
+import model.account.{AccountTable, EmailTable, UniqueNameTable}
+import org.joda.time.{DateTime, DateTimeZone}
+
+import scala.util.Random
+
 object SpecsHelper {
 
   def newId: Long = {
