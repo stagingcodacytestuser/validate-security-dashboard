@@ -1,4 +1,23 @@
-def detail(orgName: String): EssentialAction = Action {
+package controllers.organization.legacy
+
+import akka.stream.Materializer
+import codacy.database.accountDB.account.Account
+import codacy.database.accountDB.team.OrganizationProvider
+import controllers.security.Secured
+import play.api.cache.SyncCacheApi
+import play.api.mvc._
+import services.account.AccountServices
+
+import scala.concurrent.ExecutionContext
+
+@deprecated(
+  "You should use OrganizationManagementController (not legacy/OrganizationManagementController) methods that have the OrganizationProvider even for manual created organizations")
+class OrganizationManagementController()(cache: SyncCacheApi)(implicit ec: ExecutionContext,
+                                                              val materializer: Materializer)
+    extends Controller
+    with Secured {
+
+  def detail(orgName: String): EssentialAction = Action {
     Redirect(
       controllers.organization.routes.OrganizationManagementController.members(OrganizationProvider.manual, orgName))
   }
@@ -70,3 +89,4 @@ def detail(orgName: String): EssentialAction = Action {
       controllers.organization.routes.OrganizationManagementController
         .confirmationPayment(OrganizationProvider.manual, orgName, planCode, promoCode))
   }
+}
