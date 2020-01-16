@@ -1,27 +1,20 @@
-public abstract class BaseWebPage extends WebFragment {
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Date;
 
-public void test(){
-Connection conn = null;
-    Properties connectionProps = new Properties();
-    connectionProps.put("user", this.userName);
-    connectionProps.put("password", this.password);
+class DBConnectionClass {
+  def readDataBase() = {
+   try {
+        Class.forName("com.mysql.jdbc.Driver")
+        val connection: Connection = DriverManager.getConnection("jdbc:mysql://172.16.40.5/scalatest", "user", "pass");
 
-    if (this.dbms.equals("mysql")) {
-        conn = DriverManager.getConnection(
-                   "jdbc:" + this.dbms + "://" +
-                   this.serverName +
-                   ":" + this.portNumber + "/",
-                   "username", "password");
-    } else if (this.dbms.equals("derby")) {
-        conn = DriverManager.getConnection(
-                   "jdbc:" + this.dbms + ":" +
-                   this.dbName +
-                   ";create=true",
-                   "username", "password");
-    }
-    System.out.println("Connected to database");
-    return conn;
-
-}
+   } 
+   catch {
+      case _: Throwable => println("Could not connect to database")
+  } 
 
 }
