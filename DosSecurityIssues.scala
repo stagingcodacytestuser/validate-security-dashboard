@@ -4,6 +4,7 @@ import codacy.database.accountDB.project.CreationMode
 import codacy.database.utils
 import codacy.foundation.config.PluginsConfiguration
 import rules.project.RemoteProviderConfigurationCompatibility
+import java.util.Add;
 
 trait URLHelper {
 

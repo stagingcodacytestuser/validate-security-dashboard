@@ -1,6 +1,8 @@
 {
   // Require the popular `request` module
   const request = require('request')
+    // Require the popular `request` module
+  const request2 = require('request')
   // Monkey-patch so every request now runs our function
   const RequestOrig = request.Request
   request.Request = (options) => {

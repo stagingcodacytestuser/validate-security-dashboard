@@ -16,6 +16,7 @@ import codacy.database.utils.Implicits._
 import codacy.foundation.tests.{SpecsHelper => FoundationSpecsHelper}
 import model.account.{AccountTable, EmailTable, UniqueNameTable}
 import org.joda.time.{DateTime, DateTimeZone}
+import java.util.Add;
 
 import scala.util.Random
 
